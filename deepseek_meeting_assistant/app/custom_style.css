@@ -1,0 +1,708 @@
+/* DeepSeek 智能会议助手 - 自定义样式 */
+
+/* 全局样式 */
+:root {
+    --primary-color: #4F46E5;
+    --primary-hover: #4338CA;
+    --secondary-color: #7C3AED;
+    --accent-color: #06B6D4;
+    --success-color: #10B981;
+    --warning-color: #F59E0B;
+    --error-color: #EF4444;
+    --background-primary: #0F172A;
+    --background-secondary: #1E293B;
+    --background-card: #334155;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --border-color: #475569;
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-accent: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #06B6D4 100%);
+    --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* 页面加载动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* 背景装饰 */
+.stApp {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+    position: relative;
+    overflow-x: hidden;
+}
+
+.stApp::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 80%, rgba(79, 70, 229, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.05) 0%, transparent 30%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 主容器样式 */
+.main-container {
+    animation: fadeIn 0.6s ease-out;
+    position: relative;
+    z-index: 1;
+}
+
+/* 卡片样式 */
+.stCard {
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(71, 85, 105, 0.5);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 16px 0;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+}
+
+.stCard:hover {
+    transform: translateY(-2px);
+    border-color: rgba(79, 70, 229, 0.5);
+    box-shadow: 0 32px 64px -12px rgba(79, 70, 229, 0.3);
+}
+
+/* 标题样式 */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary) !important;
+    font-weight: 600;
+}
+
+/* 按钮样式 */
+.stButton > button {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(79, 70, 229, 0.4);
+}
+
+.stButton > button:active {
+    transform: translateY(0);
+}
+
+/* 次要按钮 */
+.stButton.secondary > button {
+    background: rgba(71, 85, 105, 0.5);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.stButton.secondary > button:hover {
+    background: rgba(71, 85, 105, 0.8);
+    box-shadow: var(--shadow-sm);
+}
+
+/* 输入框样式 */
+.stTextInput > div > div > input,
+.stTextInput > label,
+.stTextInput > div > label {
+    background: rgba(30, 41, 59, 0.8) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    color: var(--text-primary) !important;
+    padding: 12px !important;
+    transition: all 0.3s ease;
+}
+
+.stTextInput > div > div > input:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3) !important;
+}
+
+/* 密码输入框 */
+.stTextInput[type="password"] > div > div > input {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+}
+
+/* 选择框样式 */
+.stSelectbox > div > div > select,
+.stSelectbox > div > div > div {
+    background: rgba(30, 41, 59, 0.8) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    color: var(--text-primary) !important;
+    padding: 12px !important;
+}
+
+/* 文本区域样式 */
+.stTextArea > div > div > textarea {
+    background: rgba(30, 41, 59, 0.8) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    color: var(--text-primary) !important;
+    padding: 12px !important;
+    resize: vertical;
+    min-height: 120px;
+}
+
+.stTextArea > div > div > textarea:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3) !important;
+}
+
+/* 标签页样式 */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+    background: rgba(30, 41, 59, 0.5);
+    padding: 8px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.stTabs [data-baseweb="tab"] {
+    background: transparent;
+    color: var(--text-secondary);
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    background: rgba(79, 70, 229, 0.2);
+    color: var(--text-primary);
+}
+
+.stTabs [aria-selected="true"] {
+    background: var(--gradient-primary) !important;
+    color: white !important;
+}
+
+/* 侧边栏样式 */
+[data-testid="stSidebar"] {
+    background: rgba(15, 23, 42, 0.95);
+    border-right: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+}
+
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 {
+    color: var(--text-primary);
+}
+
+/* 侧边栏导航按钮 */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 0;
+}
+
+.sidebar-nav .stButton > button {
+    width: 100%;
+    text-align: left;
+    padding: 16px 20px;
+    background: transparent;
+    border-left: 3px solid transparent;
+    border-radius: 0;
+}
+
+.sidebar-nav .stButton > button:hover {
+    background: rgba(79, 70, 229, 0.1);
+    border-left-color: var(--primary-color);
+}
+
+/* 聊天消息样式 */
+.chat-message {
+    padding: 16px 20px;
+    border-radius: 16px;
+    margin: 12px 0;
+    animation: slideIn 0.3s ease-out;
+    position: relative;
+}
+
+.chat-message.user {
+    background: var(--gradient-primary);
+    color: white;
+    margin-left: 20%;
+    border-bottom-right-radius: 4px;
+}
+
+.chat-message.assistant {
+    background: rgba(51, 65, 85, 0.8);
+    color: var(--text-primary);
+    margin-right: 20%;
+    border-bottom-left-radius: 4px;
+    backdrop-filter: blur(10px);
+}
+
+/* 聊天容器 */
+.chat-container {
+    background: rgba(30, 41, 59, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 16px 0;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+}
+
+/* 会议室状态卡片 */
+.room-card {
+    background: rgba(51, 65, 85, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 12px 0;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.room-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.room-card .status {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.room-card .status.available {
+    background: rgba(16, 185, 129, 0.2);
+    color: var(--success-color);
+}
+
+.room-card .status.occupied {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--error-color);
+}
+
+/* 统计卡片 */
+.stat-card {
+    background: var(--gradient-accent);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    color: white;
+    margin: 12px 0;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: scale(1.02);
+}
+
+.stat-card .number {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.stat-card .label {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* 模态框/弹窗样式 */
+.modal {
+    background: rgba(15, 23, 42, 0.95);
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(20px);
+}
+
+/* 进度条样式 */
+.stProgress > div > div {
+    background: var(--gradient-primary);
+    border-radius: 8px;
+}
+
+/* 分隔线 */
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+    margin: 24px 0;
+}
+
+/* 徽章样式 */
+.badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 4px;
+}
+
+.badge.primary {
+    background: rgba(79, 70, 229, 0.2);
+    color: #818CF8;
+}
+
+.badge.success {
+    background: rgba(16, 185, 129, 0.2);
+    color: var(--success-color);
+}
+
+.badge.warning {
+    background: rgba(245, 158, 11, 0.2);
+    color: var(--warning-color);
+}
+
+.badge.error {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--error-color);
+}
+
+/* 工具提示 */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background: rgba(30, 41, 59, 0.95);
+    color: var(--text-primary);
+    text-align: center;
+    border-radius: 8px;
+    padding: 8px 12px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* 加载动画 */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 成功/错误/警告消息样式 */
+.stAlert {
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px 0;
+}
+
+/* 成功消息 */
+.stAlert[data-baseweb="notification"]:has(> div[kind="success"]) {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid var(--success-color);
+    border-radius: 12px;
+}
+
+/* 错误消息 */
+.stAlert[data-baseweb="notification"]:has(> div[kind="error"]) {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--error-color);
+    border-radius: 12px;
+}
+
+/* 信息消息 */
+.stAlert[data-baseweb="notification"]:has(> div[kind="info"]) {
+    background: rgba(6, 182, 212, 0.1);
+    border: 1px solid var(--accent-color);
+    border-radius: 12px;
+}
+
+/* 文件上传样式 */
+.stFileUploader {
+    background: rgba(30, 41, 59, 0.5);
+    border: 2px dashed var(--border-color);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stFileUploader:hover {
+    border-color: var(--primary-color);
+    background: rgba(79, 70, 229, 0.1);
+}
+
+/* 数据表格样式 */
+[data-testid="stDataFrame"] {
+    background: rgba(30, 41, 59, 0.5);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+[data-testid="stDataFrame"] table {
+    color: var(--text-primary);
+}
+
+[data-testid="stDataFrame"] th {
+    background: rgba(79, 70, 229, 0.2);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+[data-testid="stDataFrame"] tr:nth-child(even) {
+    background: rgba(51, 65, 85, 0.3);
+}
+
+/* Expander 展开面板样式 */
+.streamlit-expanderHeader {
+    background: rgba(51, 65, 85, 0.6);
+    border-radius: 12px;
+    padding: 16px;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.streamlit-expanderHeader:hover {
+    background: rgba(79, 70, 229, 0.2);
+}
+
+/* 表单布局 */
+.form-grid {
+    display: grid;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row > * {
+    flex: 1;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    .chat-message.user,
+    .chat-message.assistant {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .stat-card .number {
+        font-size: 36px;
+    }
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(30, 41, 59, 0.5);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-hover);
+}
+
+/* 头像样式 */
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    background: var(--gradient-primary);
+}
+
+.avatar.admin {
+    background: var(--gradient-accent);
+}
+
+/* 浮动操作按钮 */
+.fab {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.fab:hover {
+    transform: scale(1.1);
+    box-shadow: 0 32px 64px rgba(79, 70, 229, 0.4);
+}
+
+/* 玻璃态效果 */
+.glass {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(71, 85, 105, 0.5);
+    border-radius: 16px;
+}
+
+/* 渐变文字 */
+.gradient-text {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* 底部导航 */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border-color);
+    padding: 16px 0;
+    display: flex;
+    justify-content: space-around;
+    z-index: 100;
+}
+
+/* 登录页面特殊样式 */
+.login-container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.login-header .icon {
+    font-size: 64px;
+    margin-bottom: 24px;
+}
+
+.login-header h1 {
+    font-size: 32px;
+    margin-bottom: 16px;
+}
+
+.login-header p {
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+.login-form {
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: var(--shadow-lg);
+}
+
+.login-form .form-group {
+    margin-bottom: 24px;
+}
+
+.login-form .captcha-display {
+    background: var(--gradient-primary);
+    padding: 16px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 8px;
+    color: white;
+    font-weight: bold;
+}
